@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Validation from './validationComponent/validation';
+import CharComponent from './charComponent/charComponent';
 
 
 class App extends Component {
@@ -11,22 +12,38 @@ class App extends Component {
   }
 
   state = {
+    split: [
+      {id: 0,
+      splittedWord: ''}
+    ],
     word: '',
     letterCount: 0
   }
 
-  countLetter = (event) => {
+  countLetter = (event, id) => {
 
     
     let wordSplit = (event.target.value).split('');
     let countLetters = (wordSplit.length);
+    console.log(wordSplit);
+    
+   
 
     this.setState({
+      
+      split: [
+        {id: id,
+        splittedWord: wordSplit,
+        }
+      ],
       word: wordSplit.join(''),   
       letterCount: countLetters
       })
 
+      console.log(this.state.split.id);
     }
+
+    
 
 
   validationFunc = (textToValid) => {
@@ -35,6 +52,7 @@ class App extends Component {
 
     }
   }
+
 
   render() {
 
@@ -56,14 +74,38 @@ class App extends Component {
       )
     }
 
+    let splittedWordCopy = [...this.state.split];
+    console.log(splittedWordCopy);
+
+    let splittedChar = (
+      <div>
+          {splittedWordCopy.map((char, index) => {
+            return(
+              <CharComponent key={index} singleChar={(char) => this.state.splittedWordCopy(char)} />
+            )
+          })
+        
+          }
+      </div>
+
+
+    )
+
+
+
+
+      
+    
+
 
     return(
       <div className="classApp">
         <h1>Hi this is the lists and conditional app</h1>
-        <input type="text" onChange={(event) => this.countLetter(event)} value={this.state.word}></input>
+        <input type="text" onChange={(event, id) => this.countLetter(event, id)} value={this.state.word}></input>
         <p>The above text is long {this.state.letterCount} characters </p>
         <p>The above text is: {this.state.word}  </p>
         <Validation textLength={this.state.letterCount} textValidation={textValidation}/>
+        {splittedChar}
       </div>
 
     )
