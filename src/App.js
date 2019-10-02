@@ -20,19 +20,19 @@ class App extends Component {
     letterCount: 0
   }
 
-  countLetter = (event, id) => {
+  countLetter = (event) => {
 
     
     let wordSplit = (event.target.value).split('');
     let countLetters = (wordSplit.length);
-    console.log(wordSplit);
-    
+    let newId = this.state.split[0].id;
+    newId++;
    
 
     this.setState({
       
       split: [
-        {id: id,
+        {id: newId,
         splittedWord: wordSplit,
         }
       ],
@@ -40,7 +40,6 @@ class App extends Component {
       letterCount: countLetters
       })
 
-      console.log(this.state.split.id);
     }
 
     
