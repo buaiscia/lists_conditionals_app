@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  constructor() {
+    super();
+    this.countLetter = this.countLetter.bind(this);
+  }
+
+  state = {
+    word: '',
+    letterCount: 0
+  }
+
+  countLetter = (event) => {
+
+    
+    let wordSplit = (event.target.value).split('');
+    let countLetters = (wordSplit.length);
+
+    this.setState({
+      word: wordSplit.join(''),   
+      letterCount: countLetters
+      })
+
+    }
+
+  render() {
+    return(
+      <div className="classApp">
+        <h1>Hi this is the lists and conditional app</h1>
+        <input type="text" onChange={(event) => this.countLetter(event)} value={this.state.word}></input>
+        <p>The above text is long {this.state.letterCount} characters </p>
+        <p>The above text is  {this.state.word}  </p>
+      </div>
+
+    )
+  } 
+
+
 }
+
+
 
 export default App;
