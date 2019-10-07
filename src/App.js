@@ -9,6 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.countLetter = this.countLetter.bind(this);
+    // this.showChar = this.showChar.bind(this);
   }
 
   state = {
@@ -19,6 +20,7 @@ class App extends Component {
     word: '',
     letterCount: 0
   }
+
 
   countLetter = (event) => {
 
@@ -52,10 +54,28 @@ class App extends Component {
     }
   }
 
+  // showChar = (event, index) => {
+  //   const charIndex = this.state.split.findIndex(p => {
+  //     return p.id = index;
+  //   });
+
+  //   const char = {...this.state.split[charIndex]}
+
+  //   char.splittedWord = event.target.value;
+
+  //   const splittedWordCopy = [...this.state.split];
+  //   splittedWordCopy[charIndex] = char;
+
+  //   this.setState({ chars : char })
+  // }
+
+
+
 
   render() {
 
     let textValidation = null;
+    
 
     if(this.state.letterCount < 5) {
       textValidation = (
@@ -73,14 +93,23 @@ class App extends Component {
       )
     }
 
-    let splittedWordCopy = [...this.state.split];
-    console.log(splittedWordCopy);
+
+    // const splittedWordCopy = [...this.state.split];
+    // console.log(splittedWordCopy[0].splittedWord);
+    
+    // this.setState({splittedWordCopy: splittedWordCopy})
+  
+
 
     let splittedChar = (
       <div>
-          {splittedWordCopy.map((char, index) => {
+          {this.state.split.map((char) => {
             return(
-              <CharComponent key={index} singleChar={(char) => this.state.splittedWordCopy(char)} />
+              
+                  <CharComponent key={char.id} singleChar={char.splittedWord}/>
+                
+
+              
             )
           })
         
@@ -89,12 +118,6 @@ class App extends Component {
 
 
     )
-
-
-
-
-      
-    
 
 
     return(

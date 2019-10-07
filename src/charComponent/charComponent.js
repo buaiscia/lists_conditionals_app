@@ -2,6 +2,7 @@ import React from 'react';
 
 const CharComponent = (props) => {
     
+    let chars = props.singleChar;
 
     const style = {
         display: 'inline-block',
@@ -14,8 +15,9 @@ const CharComponent = (props) => {
     }
     return(
         <div style={style}>
-            
-            {props.singleChar}
+            { props.singleChar}
+                        
+            {/* {console.log(chars)} */}
         </div>
     )
 }
