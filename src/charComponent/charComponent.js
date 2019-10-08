@@ -14,8 +14,9 @@ const CharComponent = (props) => {
 
     }
     return(
-        <div style={style}>
+        <div style={style} onClick={props.click}>
             { props.singleChar}
+            {props.children}
                         
             {/* {console.log(chars)} */}
         </div>

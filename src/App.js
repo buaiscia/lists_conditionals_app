@@ -10,6 +10,7 @@ class App extends Component {
     super();
     this.countLetter = this.countLetter.bind(this);
     // this.showChar = this.showChar.bind(this);
+    this.deleteChar = this.deleteChar.bind(this);
   }
 
   state = {
@@ -52,6 +53,14 @@ class App extends Component {
     if((textToValid) < 5 ) {
 
     }
+  }
+
+  deleteChar = (char) => {
+    const split = [...this.state.split]
+    split.splice(char, 1);
+    this.setState( { split : split });
+    alert("delete Called");
+    
   }
 
   // showChar = (event, index) => {
@@ -99,14 +108,15 @@ class App extends Component {
     
     // this.setState({splittedWordCopy: splittedWordCopy})
   
+    let splittedChar = null;
+    let deleteChar = null;
 
-
-    let splittedChar = (
+    splittedChar = (
       <div>
-          {this.state.split.map((char) => {
+          {this.state.split.map((char, index) => {
             return(
               
-                  <CharComponent key={char.id} singleChar={char.splittedWord}/>
+                  <CharComponent key={char.id} singleChar={char.splittedWord} click={() => this.deleteChar(char.index)}/>
                 
 
               
