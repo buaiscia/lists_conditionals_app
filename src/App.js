@@ -109,15 +109,18 @@ class App extends Component {
     // this.setState({splittedWordCopy: splittedWordCopy})
   
     let splittedChar = null;
-    let deleteChar = null;
+ 
+    
 
     splittedChar = (
       <div>
           {this.state.split.map((char, index) => {
             return(
-              
-                  <CharComponent key={char.id} singleChar={char.splittedWord} click={() => this.deleteChar(char.index)}/>
-                
+               <div>
+                  <CharComponent key={`char${index}`} singleChar={char.splittedWord} />
+               </div>
+                  
+                  // click={(id) => this.deleteChar(id)}
 
               
             )
