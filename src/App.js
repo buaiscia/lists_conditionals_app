@@ -15,7 +15,8 @@ class App extends Component {
 
   state = {
     split: [
-      {id: 0,
+      {
+        // id: 0,
       splittedWord: ''}
     ],
     word: '',
@@ -26,23 +27,24 @@ class App extends Component {
   countLetter = (event) => {
 
     
-    let wordSplit = (event.target.value).split('');
+    const wordSplit = (event.target.value).split('');
     let countLetters = (wordSplit.length);
-    let newId = this.state.split[0].id;
-    newId++;
+    // let newId = this.state.split[0].id;
+    // newId++;
    
 
     this.setState({
       
       split: [
-        {id: newId,
+        {
+          // id: newId,
         splittedWord: wordSplit,
         }
       ],
-      word: wordSplit.join(''),   
+      word : wordSplit.join(''),   
       letterCount: countLetters
       })
-
+      
     }
 
     
@@ -109,9 +111,9 @@ class App extends Component {
     // this.setState({splittedWordCopy: splittedWordCopy})
   
     let splittedChar = null;
- 
-    
-
+    let spl = this.state.split[0].splittedWord;
+    console.log(spl);
+  
     splittedChar = (
       <div>
           {this.state.split.map((char, index) => {
