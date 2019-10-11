@@ -8,7 +8,7 @@ class App extends Component {
 
   constructor() {
     super();
-    this.countLetter = this.countLetter.bind(this);
+    this.countSplitWord = this.countSplitWord.bind(this);
     this.deleteChar = this.deleteChar.bind(this);
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
 
-  countLetter = (event) => {
+  countSplitWord = (event) => {
 
     const word = event.target.value;
     const wordSplit = word.split('');
@@ -33,8 +33,6 @@ class App extends Component {
       
       splitted: [
         {
-          // id: newId,
-          
         splittedWord: wordSplit,
         }
       ],
@@ -49,10 +47,10 @@ class App extends Component {
 
   deleteChar = (charIndex) => {
    
-    let word = [...this.state.word]
+    const word = this.state.word.split('')
     word.splice(charIndex, 1);
-    word = word.join('');
-    this.setState( { word : word });
+    const newWord = word.join('');
+    this.setState( { word : newWord });
     
   }
 
@@ -82,7 +80,7 @@ class App extends Component {
     return(
       <div className="classApp">
         <h1>Hi this is the lists and conditional app</h1>
-        <input type="text" onChange={(event, id) => this.countLetter(event, id)} value={this.state.word}></input>
+        <input type="text" onChange={(event, id) => this.countSplitWord(event, id)} value={this.state.word}></input>
         <p>The above text is long {this.state.letterCount} characters </p>
         <p>The above text is: {this.state.word}  </p>
         <Validation textLength={this.state.letterCount}/>
