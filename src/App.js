@@ -9,15 +9,12 @@ class App extends Component {
   constructor() {
     super();
     this.countLetter = this.countLetter.bind(this);
-    // this.showChar = this.showChar.bind(this);
-    // this.mapFunc = this.mapFunc.bind(this);
     this.deleteChar = this.deleteChar.bind(this);
   }
 
   state = {
     splitted: [
       {
-        // id: 0,
       splittedWord: ''}
     ],
     word: '',
@@ -30,9 +27,7 @@ class App extends Component {
     const word = event.target.value;
     const wordSplit = word.split('');
     let countLetters = (wordSplit.length);
-    // let newId = this.state.split[0].id;
-    // newId++;
-   
+    
 
     this.setState({
       
@@ -62,7 +57,7 @@ class App extends Component {
   deleteChar = (charIndex) => {
    
     let word = [...this.state.word]
-    let removed = word.splice(charIndex, 1);
+    word.splice(charIndex, 1);
     word = word.join('');
     this.setState( { word : word });
     
@@ -102,10 +97,7 @@ class App extends Component {
             return(
                
                   <CharComponent key={index} singleChar={char} click={() => this.deleteChar(index)} />
-               
                   
-
-    
             )
           })
         
