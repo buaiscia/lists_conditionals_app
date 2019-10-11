@@ -10,7 +10,7 @@ class App extends Component {
     super();
     this.countLetter = this.countLetter.bind(this);
     // this.showChar = this.showChar.bind(this);
-    this.mapFunc = this.mapFunc.bind(this);
+    // this.mapFunc = this.mapFunc.bind(this);
     this.deleteChar = this.deleteChar.bind(this);
   }
 
@@ -20,7 +20,7 @@ class App extends Component {
         // id: 0,
       splittedWord: ''}
     ],
-    word: 'a',
+    word: '',
     letterCount: 0
   }
 
@@ -60,8 +60,10 @@ class App extends Component {
   
 
   deleteChar = (charIndex) => {
-    const word = [...this.state.word]
-    word.split(charIndex, 1);
+    let word = [...this.state.word]
+    
+    let removed = word.splice(charIndex, 1);
+    word = word.join('');
     this.setState( { word : word });
     
   }
