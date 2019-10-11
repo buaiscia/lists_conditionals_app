@@ -10,11 +10,12 @@ class App extends Component {
     super();
     this.countLetter = this.countLetter.bind(this);
     // this.showChar = this.showChar.bind(this);
+    this.mapFunc = this.mapFunc.bind(this);
     this.deleteChar = this.deleteChar.bind(this);
   }
 
   state = {
-    split: [
+    splitted: [
       {
         // id: 0,
       splittedWord: ''}
@@ -26,8 +27,8 @@ class App extends Component {
 
   countLetter = (event) => {
 
-    
-    const wordSplit = (event.target.value).split('');
+    const word = event.target.value;
+    const wordSplit = word.split('');
     let countLetters = (wordSplit.length);
     // let newId = this.state.split[0].id;
     // newId++;
@@ -35,13 +36,15 @@ class App extends Component {
 
     this.setState({
       
-      split: [
+      splitted: [
         {
           // id: newId,
+          
         splittedWord: wordSplit,
         }
       ],
-      word : wordSplit.join(''),   
+      // word : wordSplit.join(''),  
+      word: word, 
       letterCount: countLetters
       })
       
@@ -57,11 +60,17 @@ class App extends Component {
     }
   }
 
-  deleteChar = (char) => {
-    const split = [...this.state.split]
-    split.splice(char, 1);
-    this.setState( { split : split });
-    alert("delete Called");
+  mapFunc = () =>{
+    let spl = [...this.state.splitted]
+    let spl2 = spl[0].splittedWord;
+    
+    return spl2;
+  }
+
+  deleteChar = (charIndex) => {
+    const word = [...this.state.word]
+    word.splice(charIndex, 1);
+    this.setState( { word : word });
     
   }
 
@@ -111,15 +120,20 @@ class App extends Component {
     // this.setState({splittedWordCopy: splittedWordCopy})
   
     let splittedChar = null;
-    let spl = this.state.split[0].splittedWord;
-    console.log(spl);
+    // let spl = this.state.word.split('')
+    // let splTest = this.mapFunc();
+    
+    
+ 
   
     splittedChar = (
       <div>
-          {this.state.split.map((char, index) => {
+          {/* {console.log(splTest.split(''))} */}
+          {this.state.word.map((char, index) => {
+              
             return(
                <div>
-                  <CharComponent key={`char${index}`} singleChar={char.splittedWord} />
+                  <CharComponent key={index} singleChar={char} click={() => this.deleteChar(index)} />
                </div>
                   
                   // click={(id) => this.deleteChar(id)}
