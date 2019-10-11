@@ -44,13 +44,6 @@ class App extends Component {
       
     }
 
-    
-  validationFunc = (textToValid) => {
-    textToValid = this.state.letterCount;
-    if((textToValid) < 5 ) {
-
-    }
-  }
 
   
 
@@ -65,30 +58,8 @@ class App extends Component {
 
   render() {
 
-    let textValidation = null;
-    
-
-    if(this.state.letterCount < 5) {
-      textValidation = (
-        <div>
-          <p>The text is too short</p>
-        </div>
-      )
-      
-    }
-    else {
-      textValidation = (
-        <div>
-          <p>The text is long enough</p>
-        </div>
-      )
-    }
-
-
     let splittedChar = null;
-  
-    
- 
+
   
     splittedChar = (
       <div>
@@ -114,7 +85,7 @@ class App extends Component {
         <input type="text" onChange={(event, id) => this.countLetter(event, id)} value={this.state.word}></input>
         <p>The above text is long {this.state.letterCount} characters </p>
         <p>The above text is: {this.state.word}  </p>
-        <Validation textLength={this.state.letterCount} textValidation={textValidation}/>
+        <Validation textLength={this.state.letterCount}/>
         {splittedChar}
       </div>
 
