@@ -14,14 +14,14 @@ const CharComponent = (props) => {
 
     }
     return(
-        <div>
+        
             
             <div style={style} onClick={props.click}>
                 {props.singleChar}
                             
             </div>
             
-        </div>
+        
         
     )
 }

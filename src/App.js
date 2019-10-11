@@ -60,8 +60,8 @@ class App extends Component {
   
 
   deleteChar = (charIndex) => {
+   
     let word = [...this.state.word]
-    
     let removed = word.splice(charIndex, 1);
     word = word.join('');
     this.setState( { word : word });
@@ -100,9 +100,9 @@ class App extends Component {
           {this.state.word.split('').map((char, index) => {
               
             return(
-               <div>
+               
                   <CharComponent key={index} singleChar={char} click={() => this.deleteChar(index)} />
-               </div>
+               
                   
 
     
