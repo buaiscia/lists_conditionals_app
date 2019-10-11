@@ -20,7 +20,7 @@ class App extends Component {
         // id: 0,
       splittedWord: ''}
     ],
-    word: '',
+    word: 'a',
     letterCount: 0
   }
 
@@ -43,7 +43,6 @@ class App extends Component {
         splittedWord: wordSplit,
         }
       ],
-      // word : wordSplit.join(''),  
       word: word, 
       letterCount: countLetters
       })
@@ -51,8 +50,6 @@ class App extends Component {
     }
 
     
-
-
   validationFunc = (textToValid) => {
     textToValid = this.state.letterCount;
     if((textToValid) < 5 ) {
@@ -60,37 +57,14 @@ class App extends Component {
     }
   }
 
-  mapFunc = () =>{
-    let spl = [...this.state.splitted]
-    let spl2 = spl[0].splittedWord;
-    
-    return spl2;
-  }
+  
 
   deleteChar = (charIndex) => {
     const word = [...this.state.word]
-    word.splice(charIndex, 1);
+    word.split(charIndex, 1);
     this.setState( { word : word });
     
   }
-
-  // showChar = (event, index) => {
-  //   const charIndex = this.state.split.findIndex(p => {
-  //     return p.id = index;
-  //   });
-
-  //   const char = {...this.state.split[charIndex]}
-
-  //   char.splittedWord = event.target.value;
-
-  //   const splittedWordCopy = [...this.state.split];
-  //   splittedWordCopy[charIndex] = char;
-
-  //   this.setState({ chars : char })
-  // }
-
-
-
 
   render() {
 
@@ -114,31 +88,22 @@ class App extends Component {
     }
 
 
-    // const splittedWordCopy = [...this.state.split];
-    // console.log(splittedWordCopy[0].splittedWord);
-    
-    // this.setState({splittedWordCopy: splittedWordCopy})
-  
     let splittedChar = null;
-    // let spl = this.state.word.split('')
-    // let splTest = this.mapFunc();
-    
+  
     
  
   
     splittedChar = (
       <div>
-          {/* {console.log(splTest.split(''))} */}
-          {this.state.word.map((char, index) => {
+          {this.state.word.split('').map((char, index) => {
               
             return(
                <div>
                   <CharComponent key={index} singleChar={char} click={() => this.deleteChar(index)} />
                </div>
                   
-                  // click={(id) => this.deleteChar(id)}
 
-              
+    
             )
           })
         
